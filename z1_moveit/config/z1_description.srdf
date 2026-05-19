@@ -21,8 +21,18 @@
         <joint name="joint5" value="0"/>
         <joint name="joint6" value="0"/>
     </group_state>
+    <group name="gripper">
+        <joint name="jointGripper"/>
+    </group>
+    <group_state name="open" group="gripper">
+        <joint name="jointGripper" value="-1.5708"/>
+    </group_state>
+    <group_state name="closed" group="gripper">
+        <joint name="jointGripper" value="0"/>
+    </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="arm_ee" parent_link="link06" group="z1_arm"/>
+    <end_effector name="gripper_ee" parent_link="link06" group="gripper" parent_group="z1_arm"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="gripperMover" link2="gripperStator" reason="Adjacent"/>
     <disable_collisions link1="gripperMover" link2="link03" reason="Never"/>
